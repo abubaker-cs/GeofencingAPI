@@ -26,4 +26,9 @@
     <string name="location_txt">Location:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="geofence_icon">Geofence icon</string>
+    <string name="thumbnail">thumbnail</string>
+    <string name="snapshot_image">Snapshot image</string>
+    <string name="add_geofence">Add Geofence</string>
+    <string name="geofences_list">Geofences List</string>
 </resources>
