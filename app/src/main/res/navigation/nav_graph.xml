@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/permissionFragment"
-        android:name="org.abubaker.geofencingapi.PermissionFragment"
+        android:name="org.abubaker.geofencingapi.ui.permission.PermissionFragment"
         android:label="fragment_permission"
         tools:layout="@layout/fragment_permission"
         >
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="org.abubaker.geofencingapi.MapsFragment"
+        android:name="org.abubaker.geofencingapi.ui.maps.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps"
         >
@@ -42,7 +42,7 @@
 
         <fragment
             android:id="@+id/step1Fragment"
-            android:name="org.abubaker.geofencingapi.Step1Fragment"
+            android:name="org.abubaker.geofencingapi.ui.addgeofence.Step1Fragment"
             android:label="fragment_step1"
             tools:layout="@layout/fragment_step1"
             >
@@ -55,7 +55,7 @@
         </fragment>
         <fragment
             android:id="@+id/step2Fragment"
-            android:name="org.abubaker.geofencingapi.Step2Fragment"
+            android:name="org.abubaker.geofencingapi.ui.addgeofence.Step2Fragment"
             android:label="fragment_step2"
             tools:layout="@layout/fragment_step2"
             >
@@ -75,7 +75,7 @@
 
         <fragment
             android:id="@+id/step3Fragment"
-            android:name="org.abubaker.geofencingapi.Step3Fragment"
+            android:name="org.abubaker.geofencingapi.ui.addgeofence.Step3Fragment"
             android:label="fragment_step3"
             tools:layout="@layout/fragment_step3"
             >
@@ -90,7 +90,7 @@
     </navigation>
     <fragment
         android:id="@+id/geofencesFragment"
-        android:name="org.abubaker.geofencingapi.GeofencesFragment"
+        android:name="org.abubaker.geofencingapi.ui.geofences.GeofencesFragment"
         android:label="fragment_geofences"
         tools:layout="@layout/fragment_geofences"
         >

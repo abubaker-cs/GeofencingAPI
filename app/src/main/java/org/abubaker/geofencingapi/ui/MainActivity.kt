@@ -1,7 +1,8 @@
-package org.abubaker.geofencingapi
+package org.abubaker.geofencingapi.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import org.abubaker.geofencingapi.R
 
 class MainActivity : AppCompatActivity() {
 

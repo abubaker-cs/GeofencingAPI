@@ -1,23 +1,26 @@
-package org.abubaker.geofencingapi
+package org.abubaker.geofencingapi.ui.permission
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import org.abubaker.geofencingapi.databinding.FragmentStep3Binding
+import org.abubaker.geofencingapi.databinding.FragmentPermissionBinding
 
-class Step3Fragment : Fragment() {
 
-    private var _binding: FragmentStep3Binding? = null
+class PermissionFragment : Fragment() {
+
+    private var _binding: FragmentPermissionBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         // Inflate the layout for this fragment
-        _binding = FragmentStep3Binding.inflate(inflater, container, false)
+        _binding = FragmentPermissionBinding.inflate(inflater, container, false)
+
 
         return binding.root
     }

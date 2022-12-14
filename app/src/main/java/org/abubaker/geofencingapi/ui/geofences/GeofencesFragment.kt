@@ -1,4 +1,4 @@
-package org.abubaker.geofencingapi
+package org.abubaker.geofencingapi.ui.geofences
 
 import android.os.Bundle
 import android.view.LayoutInflater
