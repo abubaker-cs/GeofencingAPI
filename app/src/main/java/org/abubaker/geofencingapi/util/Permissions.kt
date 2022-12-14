@@ -10,12 +10,18 @@ import org.abubaker.geofencingapi.util.Constants.PERMISSION_LOCATION_REQUEST_COD
 
 object Permissions {
 
+    /**
+     * 01 Fine + Coarse
+     */
+
+    // Do we have the permission to access the location using Fine + Coarse?
     fun hasLocationPermission(context: Context) =
         EasyPermissions.hasPermissions(
             context,
             Manifest.permission.ACCESS_FINE_LOCATION
         )
 
+    // Request the permission to access the location using Fine + Coarse
     fun requestsLocationPermission(fragment: Fragment) {
         EasyPermissions.requestPermissions(
             fragment,
@@ -25,17 +31,29 @@ object Permissions {
         )
     }
 
+    /**
+     * 02 Background Location Permission
+     */
+
+    // Do we have the background location permission?
     fun hasBackgroundLocationPermission(context: Context): Boolean {
+
+        // If our Android has API Level 29+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             return EasyPermissions.hasPermissions(
                 context,
                 Manifest.permission.ACCESS_BACKGROUND_LOCATION
             )
         }
+
         return true
+
     }
 
+    // Request the background location permission
     fun requestsBackgroundLocationPermission(fragment: Fragment) {
+
+        // If our Android has API Level 29+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             EasyPermissions.requestPermissions(
                 fragment,
@@ -45,4 +63,5 @@ object Permissions {
             )
         }
     }
+    
 }
