@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.abubaker.geofencingapi.data.DataStoreRepository
+import javax.inject.Inject
 
 /**
  * SharedViewModel is a class that is used to SHARED DATA between multiple fragments.
@@ -15,7 +16,7 @@ import org.abubaker.geofencingapi.data.DataStoreRepository
 
 // This annotation will handle all backend work for us, so we do not need any factory
 @HiltViewModel
-class SharedViewModel(
+class SharedViewModel @Inject constructor(
     application: Application,
     private val dataStoreRepository: DataStoreRepository
 ) : AndroidViewModel(application) {

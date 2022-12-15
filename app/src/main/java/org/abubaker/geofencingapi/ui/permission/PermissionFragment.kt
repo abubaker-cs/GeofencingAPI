@@ -10,13 +10,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
+import dagger.hilt.android.AndroidEntryPoint
 import org.abubaker.geofencingapi.R
 import org.abubaker.geofencingapi.databinding.FragmentPermissionBinding
 import org.abubaker.geofencingapi.util.ExtensionFunctions.observeOnce
 import org.abubaker.geofencingapi.util.Permissions
 import org.abubaker.geofencingapi.viewmodels.SharedViewModel
 
-
+@AndroidEntryPoint
 class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private var _binding: FragmentPermissionBinding? = null
@@ -62,9 +63,11 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 // Navigate to the MapFragment (only for the first time
                 findNavController().navigate(R.id.action_permissionFragment_to_add_geofence_graph)
                 sharedViewModel.saveFirstLaunch(false)
+
             } else {
 
-                // Navigate to the GeofenceListFragment
+                // Since we do not have any permission on the 1st launch, that's why we will ask the
+                // user to grant the permission
                 findNavController().navigate(R.id.action_permissionFragment_to_mapsFragment)
 
             }
