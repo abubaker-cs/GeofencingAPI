@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import org.abubaker.geofencingapi.databinding.FragmentStep3Binding
+import org.abubaker.geofencingapi.viewmodels.SharedViewModel
 
 class Step3Fragment : Fragment() {
 
     private var _binding: FragmentStep3Binding? = null
     private val binding get() = _binding!!
+
+    // Get the SharedViewModel
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
