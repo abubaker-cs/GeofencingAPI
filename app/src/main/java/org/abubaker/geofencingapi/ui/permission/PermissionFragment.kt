@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.vmadalin.easypermissions.EasyPermissions
+import com.vmadalin.easypermissions.dialogs.SettingsDialog
 import org.abubaker.geofencingapi.R
 import org.abubaker.geofencingapi.databinding.FragmentPermissionBinding
+import org.abubaker.geofencingapi.util.ExtensionFunctions.observeOnce
 import org.abubaker.geofencingapi.util.Permissions
 import org.abubaker.geofencingapi.viewmodels.SharedViewModel
 
 
-class PermissionFragment : Fragment() {
+class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private var _binding: FragmentPermissionBinding? = null
 
@@ -47,7 +51,10 @@ class PermissionFragment : Fragment() {
     }
 
     private fun checkFirstLaunch() {
-        sharedViewModel.readFirstLaunch.observe(viewLifecycleOwner) { firstLaunch ->
+
+        // Check if the app is launched for the first time using our CUSTOM Extension Function:
+        // .observeOnce()
+        sharedViewModel.readFirstLaunch.observeOnce(viewLifecycleOwner) { firstLaunch ->
 
             // If it's the first launch, then we will navigate to the MapFragment
             if (firstLaunch) {
@@ -61,13 +68,63 @@ class PermissionFragment : Fragment() {
                 findNavController().navigate(R.id.action_permissionFragment_to_mapsFragment)
 
             }
-            
+
         }
+    }
+
+    // Permission: Denied
+    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+
+        if (EasyPermissions.somePermissionDenied(this, perms.first())) {
+            SettingsDialog.Builder(requireContext()).build().show()
+        } else {
+            Permissions.requestsLocationPermission(this)
+        }
+
+    }
+
+    // Permission: Granted
+    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
+        Toast.makeText(
+            requireContext(),
+            "Permission Granted! Tap on 'Continue' button to proceed.",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    /**
+     * Callback for the result from requesting permissions. This method
+     * is invoked for every call on [.requestPermissions].
+     *
+     *
+     * **Note:** It is possible that the permissions request interaction
+     * with the user is interrupted. In this case you will receive empty permissions
+     * and results arrays which should be treated as a cancellation.
+     *
+     *
+     * @param requestCode The request code passed in [.requestPermissions].
+     * @param permissions The requested permissions. Never null.
+     * @param grantResults The grant results for the corresponding permissions
+     * which is either [android.content.pm.PackageManager.PERMISSION_GRANTED]
+     * or [android.content.pm.PackageManager.PERMISSION_DENIED]. Never null.
+     *
+     * @see .requestPermissions
+     */
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+
+        // This is the callback from the EasyPermissions library
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
 
 }
