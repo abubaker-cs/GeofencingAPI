@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import org.abubaker.geofencingapi.databinding.FragmentStep1Binding
 import org.abubaker.geofencingapi.viewmodels.SharedViewModel
 
-
 class Step1Fragment : Fragment() {
 
     private var _binding: FragmentStep1Binding? = null

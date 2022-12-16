@@ -62,6 +62,8 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
                 // Navigate to the MapFragment (only for the first time
                 findNavController().navigate(R.id.action_permissionFragment_to_add_geofence_graph)
+
+                // Update the value of the firstLaunch to false
                 sharedViewModel.saveFirstLaunch(false)
 
             } else {

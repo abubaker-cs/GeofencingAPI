@@ -14,3 +14,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+
+/**
+ * Issue: Hilt
+ * https://github.com/google/dagger/issues/2548
+ * https://github.com/google/dagger/issues/2548#issuecomment-820282848
+ *
+ *
+ */
